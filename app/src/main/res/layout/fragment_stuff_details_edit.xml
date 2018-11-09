@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="10"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivForEdit"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/nameForEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center" android:inputType="text"
+        android:text="Name Editor" />
+
+    <EditText
+        android:id="@+id/priceForEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center" android:inputType="number"
+        android:text="Price Editor" />
+
+    <Button
+        android:id="@+id/btnForEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="Click to save" />
+</android.widget.LinearLayout>
