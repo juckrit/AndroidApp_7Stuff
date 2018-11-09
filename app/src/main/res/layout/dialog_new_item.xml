@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="@string/hint_firstName"
         android:inputType="textPersonName" />
 
     <EditText
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Price"
+        android:hint="@string/hint_LastName"
         android:inputType="number"
         android:maxLength="3" />
 

@@ -2,4 +2,10 @@
     <string name="app_name">7 Stuff</string>
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
+    <string name="hint_firstName">ชื่อ</string>
+    <string name="hint_LastName">ราคา</string>
+    <string name="ClickToSave">กดเพื่อบันทึก</string>
+    <string name="ClickToEdit">กดเพื่อแก้ไข</string>
+    <string name="Edit">แก้ไข</string>
+    <string name="Summary">ภาพรวม</string>
 </resources>

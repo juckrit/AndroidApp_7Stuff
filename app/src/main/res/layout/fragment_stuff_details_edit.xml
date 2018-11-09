@@ -32,5 +32,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:text="Click to save" />
+        android:text="@string/ClickToSave" />
 </android.widget.LinearLayout>

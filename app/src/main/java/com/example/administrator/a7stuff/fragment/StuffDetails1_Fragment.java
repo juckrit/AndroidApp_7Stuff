@@ -100,9 +100,9 @@ public class StuffDetails1_Fragment extends Fragment {
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "Summary";
+                        return getContext().getResources().getString(R.string.Summary);
                     case 1:
-                        return "Edit";
+                        return getContext().getResources().getString(R.string.Edit);
 
                     default:
                         return null;
