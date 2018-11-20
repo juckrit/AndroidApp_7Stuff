@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.a7stuff.Object.Stuff;
 import com.example.administrator.a7stuff.R;
 import com.example.administrator.a7stuff.manager.Database;
@@ -50,7 +51,7 @@ public class StuffDetails1_Edit_Fragment extends Fragment {
     private boolean isSelecteed;
 
     private Callbacks mCallbacks;
-
+    Context mContext;
 
     public interface Callbacks {
         //Callback for when button clicked.
@@ -63,6 +64,7 @@ public class StuffDetails1_Edit_Fragment extends Fragment {
         super.onAttach(context);
         // Activities containing this fragment must implement its callbacks
         mCallbacks = (Callbacks) context;
+        this.mContext = context;
 
     }
 
@@ -201,21 +203,27 @@ public class StuffDetails1_Edit_Fragment extends Fragment {
 
     private void setIvImg(String path) {
 
-        int size = 30; //minimize  as much as you want
+
+
+        int size = 150; //minimize  as much as you want
         if (path != null) {
-            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
-            if (bitmapOriginal != null) {
-                int bitmapByteCount = BitmapCompat.getAllocationByteCount(bitmapOriginal);
-                if (bitmapByteCount > 10000000) {
+            Glide.with(mContext)
+                    .load(new File(path)) // Uri of the picture
+                    .into(this.ivForEdit);
 
-                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size, bitmapOriginal.getHeight() / size, true);
-
-                    this.ivForEdit.setImageBitmap(bitmapsimplesize);
-                } else {
+//            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
+//            if (bitmapOriginal != null) {
+//                int bitmapByteCount = BitmapCompat.getAllocationByteCount(bitmapOriginal);
+//                if (bitmapByteCount > 10000000) {
 //
-                    this.ivForEdit.setImageBitmap(bitmapOriginal);
-                }
-            }
+//                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size, bitmapOriginal.getHeight() / size, true);
+//
+//                    this.ivForEdit.setImageBitmap(bitmapsimplesize);
+//                } else {
+////
+//                    this.ivForEdit.setImageBitmap(bitmapOriginal);
+//                }
+//            }
 
         } else {
             // Toast.makeText(getContext(),"File "+ path+"Not Exist",Toast.LENGTH_SHORT).show();

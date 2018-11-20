@@ -2,8 +2,8 @@
     <string name="app_name">7 Stuff</string>
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
-    <string name="hint_firstName">First Name</string>
-    <string name="hint_LastName">Last Name</string>
+    <string name="hint_firstName">Name</string>
+    <string name="hint_LastName">Price</string>
     <string name="ClickToSave">Click To Save</string>
     <string name="ClickToEdit">Click To Edit</string>
     <string name="Edit">Edit</string>

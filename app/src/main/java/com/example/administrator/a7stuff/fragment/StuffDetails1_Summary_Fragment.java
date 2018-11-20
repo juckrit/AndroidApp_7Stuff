@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.a7stuff.BuildConfig;
 import com.example.administrator.a7stuff.Object.Stuff;
 import com.example.administrator.a7stuff.R;
@@ -167,8 +168,11 @@ public class StuffDetails1_Summary_Fragment extends Fragment {
 
         int size = 10; //minimize  as much as you want
         if (path != null) {
-            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
-            this.ivImg.setImageBitmap(bitmapOriginal);
+            Glide.with(getActivity())
+                    .load(new File(path)) // Uri of the picture
+                    .into(this.ivImg);
+//            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
+//            this.ivImg.setImageBitmap(bitmapOriginal);
 
 
         } else {

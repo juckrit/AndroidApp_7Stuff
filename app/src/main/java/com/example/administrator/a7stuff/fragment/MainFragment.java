@@ -15,6 +15,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +25,14 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.administrator.a7stuff.Object.ListOfStuff;
 import com.example.administrator.a7stuff.Object.Stuff;
 import com.example.administrator.a7stuff.R;
 import com.example.administrator.a7stuff.adapter.StuffAdapter;
+import com.example.administrator.a7stuff.adapter.StuffRecycleViewAdapter;
 import com.example.administrator.a7stuff.manager.Database;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
@@ -57,6 +61,8 @@ public class MainFragment extends Fragment {
     Uri imageUri;
     boolean isSelecteed;
     ListOfStuff list;
+//    RecyclerView recyclerView;
+//    StuffRecycleViewAdapter stuffRecycleViewAdapter;
 
 
     public MainFragment() {
@@ -99,10 +105,14 @@ public class MainFragment extends Fragment {
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mListView = (ListView) rootView.findViewById(R.id.listView);
         floatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.fabBtn);
+//        recyclerView = (RecyclerView)rootView.findViewById(R.id.recycleview);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Database.getInstance().createDB();
         //Database.getInstance().createData();
         stuffAdapter = new StuffAdapter();
+
         updateListView();
 
 
@@ -154,6 +164,10 @@ public class MainFragment extends Fragment {
         stuffAdapter.setListOfStuff(list);
         mListView.setAdapter(stuffAdapter);
         stuffAdapter.notifyDataSetChanged();
+
+//        list = Database.getInstance().readData();
+//        stuffRecycleViewAdapter = new StuffRecycleViewAdapter(getContext(),list);
+//        recyclerView.setAdapter(stuffRecycleViewAdapter);
     }
 
     @Override

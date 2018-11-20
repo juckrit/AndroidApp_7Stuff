@@ -31,6 +31,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c2665e57bf06b30d58d2f18bc0500508582f0d84" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

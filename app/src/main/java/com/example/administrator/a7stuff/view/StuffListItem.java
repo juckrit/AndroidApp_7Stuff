@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.module.AppGlideModule;
 import com.example.administrator.a7stuff.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
@@ -28,10 +32,12 @@ public class StuffListItem extends BaseCustomViewGroup {
     TextView tvName;
     TextView tvPrice;
     ImageView ivImg;
+    Context mContext;
 
 
     public StuffListItem(Context context) {
         super(context);
+        this.mContext = context;
         initInflate();
         initInstances();
     }
@@ -124,31 +130,48 @@ public class StuffListItem extends BaseCustomViewGroup {
 
 
     public void setTvPrice(int price) {
-        this.tvPrice.setText(String.valueOf(price)+ " บาท");
+        this.tvPrice.setText(String.valueOf(price) + " บาท");
     }
 
 
     public void setIvImg(String path) {
 
+
+
+
+
+
         int size = 10; //minimize  as much as you want
         if (path != null) {
-            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
-            if (bitmapOriginal != null) {
-                int bitmapByteCount = BitmapCompat.getAllocationByteCount(bitmapOriginal);
 
-                if (bitmapByteCount > 50000000) {
-                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size, bitmapOriginal.getHeight() / size, true);
-                    this.ivImg.setImageBitmap(bitmapsimplesize);
-                } else {
-//                this.ivImg.setImageBitmap(bitmapOriginal);
-                    this.ivImg.setImageURI(Uri.fromFile(new File(path)));
-                }
-                bitmapOriginal.recycle();
-            } else {
-                // Toast.makeText(getContext(),"File "+ path+"Not Exist",Toast.LENGTH_SHORT).show();
-                this.ivImg.setImageDrawable(getResources().getDrawable(R.drawable.coke));
+            Glide.with(mContext)
+                    .load(new File(path)) // Uri of the picture
+                    .into(this.ivImg);
 
-            }
+//
+//            Bitmap bitmapOriginal = BitmapFactory.decodeFile(path);
+//            if (bitmapOriginal != null) {
+//                int bitmapByteCount = BitmapCompat.getAllocationByteCount(bitmapOriginal);
+//
+//                if (bitmapByteCount > 50000000) {
+//                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size + 10, bitmapOriginal.getHeight() / size + 10, true);
+//                    this.ivImg.setImageBitmap(bitmapsimplesize);
+//                } else if (bitmapByteCount > 40000000) {
+//                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size + 5, bitmapOriginal.getHeight() / size + 5, true);
+//                    this.ivImg.setImageBitmap(bitmapsimplesize);
+//                } else if (bitmapByteCount > 30000000) {
+//                    Bitmap bitmapsimplesize = Bitmap.createScaledBitmap(bitmapOriginal, bitmapOriginal.getWidth() / size, bitmapOriginal.getHeight() / size, true);
+//                    this.ivImg.setImageBitmap(bitmapsimplesize);
+//                } else {
+////                this.ivImg.setImageBitmap(bitmapOriginal);
+//                    this.ivImg.setImageURI(Uri.fromFile(new File(path)));
+//                }
+//                bitmapOriginal.recycle();
+//            } else {
+//                // Toast.makeText(getContext(),"File "+ path+"Not Exist",Toast.LENGTH_SHORT).show();
+//                this.ivImg.setImageDrawable(getResources().getDrawable(R.drawable.coke));
+//
+//            }
 
         } else {
 //        this.ivImg.setImageURI(Uri.fromFile(new File(path))); //work but out of mem error
